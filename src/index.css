@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Light mode background */
+    --foreground: 224 71.4% 4.1%; /* Light mode text */
+    
+    --dark-background: 222 47% 11%; /* Dark mode background */
+    --dark-foreground: 210 40% 98%; /* Dark mode text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    
+    --primary: 349 83% 56%; /* SESI Red */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    --secondary: 215 27.9% 16.9%; /* Dark Blue/Gray */
+    --secondary-foreground: 0 0% 100%; /* White */
+    
+    --muted: 220 14.3% 95.9%; /* Light Gray */
+    --muted-foreground: 220 8.9% 46.1%; /* Medium Gray */
+    
+    --accent: 220 14.3% 95.9%; /* Light Gray */
+    --accent-foreground: 220 13% 9%; /* Dark Gray */
+    
+    --destructive: 0 84.2% 60.2%; /* Bright Red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
+    --border: 220 13% 91%; /* Light border */
+    --input: 220 13% 91%; /* Input field border */
+    --ring: 349 83% 56%; /* SESI Red for focus rings */
+    
+    --radius: 0.75rem; /* Default border radius */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold tracking-tight;
+  }
+  .dark body {
+    @apply bg-dark-background text-dark-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.85); /* Slightly more opaque for light mode */
+    backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(227, 24, 55, 0.1);
+  }
+  .dark .glass-effect {
+    background: rgba(17, 24, 39, 0.75); /* Darker glass for dark mode */
+    backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(227, 24, 55, 0.2);
+  }
+  
+  .sesi-card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out;
+    border: 1px solid var(--border);
+  }
+  .dark .sesi-card {
+    @apply bg-gray-800/70 border-gray-700 hover:shadow-red-500/20;
+  }
+
+  .sesi-dev-card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+    border-left: 5px solid #E31837;
+  }
+  .dark .sesi-dev-card {
+    @apply bg-gray-800 border-gray-700 hover:shadow-red-500/30;
+  }
+
+  .sesi-section {
+    @apply relative overflow-hidden py-20 md:py-28;
+  }
+  
+  .sesi-section-white {
+     @apply bg-white;
+  }
+  .dark .sesi-section-white {
+    @apply bg-gray-900; /* Adjust for dark mode if needed */
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-5xl font-extrabold mb-4 text-[#E31837];
+    line-height: 1.2;
+  }
+  .dark .section-title {
+    @apply text-red-400;
+  }
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed;
+  }
+  .dark .section-subtitle {
+    @apply text-gray-400;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-red-500 via-[#E31837] to-red-600 text-transparent bg-clip-text;
+  }
+
+  .button-primary-glow {
+    @apply bg-[#E31837] hover:bg-red-700 text-white font-semibold shadow-lg hover:shadow-red-500/40 transition-all duration-300 ease-in-out;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    border-radius: 9999px; /* pill shape */
+  }
+  .button-primary-glow:hover {
+    transform: translateY(-2px);
+  }
+
+  .text-shadow {
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+  }
+  .dark .text-shadow {
+    text-shadow: 0px 2px 6px rgba(227, 24, 55, 0.3);
+  }
+}
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.dark ::-webkit-scrollbar-track {
+  background: #2d3748; /* Darker track for dark mode */
+}
+::-webkit-scrollbar-thumb {
+  background: #E31837; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c41530; 
+}
